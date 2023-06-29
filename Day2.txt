@@ -1,0 +1,96 @@
+Day2 - 
+
+Packages - Packages are just folders which can contains different/multiple folder inside it or classes. Packages are used to differentiate different componenets of our application just like we use different functions and different classes to differentiate between differnet funtionalities of our applications.
+
+Since packages has different classes we can import them using import package name.classname.*functionname*.
+Package by convention follow the company/project name in reverse. If company name is MyCompany.com. Then by conventino pacakge name is com.MyCompany.*classname*.
+
+So if we want to import any package we must follow all these convention to get the exact class funtionality we want.
+If we use ArrayList, Arrays, Scanner clases. It is imported as well. If not imported the IDE will import it by default or we have to import it manually. Otherwise these clases functionality wont work.
+
+Pacakges also helps preventing name collision. Lets say if you are working with Shapes in com.companyname.Shapes package. It contains different shapes like Circle, Square etc.. . We import this package annd we will start using this class. But then we also create a different class named as Circle which has additional feature like it will print a circle of the radius given by the user. Now we wont be able to create new class with Name of Circle. Becuase in the Package we already have circle. So what we can do is we can create new package name PrintShape and inside we can create all these classes. And when we want to use it we can just import the package and call the method.
+
+
+Packages are very important to Organize code, to Reuse Code and also to prevent name collision.
+
+Import - Import is used to access classes and funtionalities of different packages. If we want to import any package/folder we will use below command. import "full.package.name".*ClassName*.*methodName*.
+Now there are some rule when we should write this command. 
+If the java class already has a "pacakge com.mycompany.currentclass" command then we should wirte import after this and before creating class.
+
+If we dont follow these rules the java class wont run. Like we cannot write import after class. Or inside class. This will give compilation error.
+If the file or classes are in same package/folder then we dont have to use import.
+
+Static - Static is a keyword which makes the member (method or vairable) of the class no object dependent. Menaing the functionality of the method or member is not dependent on the object we create. we can access/change/modify the static member withtout a need to create object. We can access it directly using the ClassName.StaticMember;
+
+Static members are resolved during compile time. While object/ instance members are resolved during runtime.
+
+Static members are common for all objects. Lets say a variable name population is created in world class. and it has people in it and there properties. Now the population variable is common for all the people inside the world. It has links to the object. So we write algoright to increase the population by one after every object is created. And now if we print the vairable using object or not it will give us expected result. For eg:
+---------------------------------------------------------------------------------
+Class World {
+// it has populationg variable which will be static and a name variable and we will create constructor of name variable
+static int population;
+String name;
+public World(String name){ this.name = name; World.population +=1;}
+
+}
+
+Class Main {
+
+//Inside here we will create world method object 2 and then print the population. This way we will know how without even using the object we can access static members.
+
+PSVM(){
+World human1 = new World("Mayur");
+World human2 = new World("Aman");
+
+// So now if we print the popluation we wiil get 2 output.
+//We can print population using object and classname as well. But by convention it if preferred to use Class name. for static memeber.
+
+SOP(World.population);
+}
+}
+---------------------------------------------------------------------------------
+
+Use of Static Members in Non Static method and vice versa - 
+
+We can use static members inside of non static method without creating a object because static method dont need object to be accessed. 
+Also we can use static memebers inside a static method its pretty straight forword with that. 
+
+But we cannot use non static members inside a static method. Or all of the members which requires object we cant have them inside a static method directly. 
+We can have them if we create a objects for those method and call them using objects.
+
+Why? - Now we know static methods dont need object and non static method needs object . Now if we have non static method inside a static method. There is not way that the non static method is going to somehow get called without a object. since static method it self wont require an object. So logically we cannot call them.
+
+Now we can have non static method inside another non static method even without a object. How?
+So we also know that somehow somewhere the non static method is going to get called inside a static method which is main funtion. And we also know that the object of that non static method is going to be created. So that same object is going to help to call the non static member we had in non static method.
+
+Also we cannot use this keyword inside static object. Why? this keyword is a object of the class. Now the static method dont need a object to be accessed hence the this keyword has no use to beign with. Thats why we cant have it . It will give an error.
+
+Why main method is static? - in java the first thing run is main method. Now if main method would have been non static/instance method. then we would have also needed a object to be created. So how can we create a object of a method which is the first method to be created. There is nothing before main method in java. If java starts it will go and look straight for main method. And if its non  static then it cannot access it since it need a object. But there is no way java can create a object for that main method. since its the first thing which is running.
+Its like there cant be humans/rocks/time before Big Bang. Since big bang is the first thing in this universe nothing can exist before that.
+
+And why it is satic. because we dont need objects to access a static method or variable. Static members belongs to the class non the object of the class.
+
+Static block -  Static block is "Staic {}" like this. It is a block which is initiliazied at very first only once when the object is created of that class. 
+Lets say we have one static block and it has "hello world" and then in another class we created a object of that class. and like wise we created 3 objects. now if we run the program it will only print hello world only once why becaseu of the above reason.
+
+Static block are used to initilalized static vairables. or do to some initilization before the class is used. It is used to handle complex initilization logic and exception handling of static variables also.
+
+Inner class - Inner class is a class inside a class. The outer class will have the name of file or vice versa. And the inner class we create must be inside the class. And we can do that.
+
+Now if we have class Hi {
+Class By{}
+
+ psvm(){
+
+//Now if we try to create a object of By class it wont be possible why ? because the inner class By is now dependent on Outer Class Hi.
+Since its not static and it is bounded by another class that means we need object for this inner class.
+If we had a inner class as static. then we dont need to create object for this inner class. 
+But note to access the members of the innerclass by we do need to create object of innerclass if they also dont have static members. 
+But to access the innerclass we wont need obj of Hi Class i.e outer class.
+
+}}
+
+
+
+SingleTon Class -  A singleton class is a class of which we can have only one object. We cannot create more than one objects of that class.
+The way singleton class can be created is we make the constructor private. we can have static instance of a class. and we can also have a getter method which will check if the instance is null or not. If it is null then we will assign new instance and we return it outside the if condition. Now it will only happens once hence we got a singlton classs. Now to make singleton vairable not dependent on objects we will make it static. Same with the getter method we create.
