@@ -1,0 +1,43 @@
+Day3 - 
+
+Inheritance -  Inheritance is a property of OOPs which allows a child class to access/own/inherit all the members of parent class. After inheriting all the properties of parent class now the child class can access parent classes elements and use them if they need. Parent class usually have common members which can be futher used by all the child classes.
+This is done using extends keyword - "class Child extends Parent".
+
+Now how to do it?
+We need to first create a object of Child class in our main function. Once done that then we can directly call parent class members using that reference variables of type Child.
+If we have class Animal which makes sound. and a class Dog extends Animal which barks. And if we have makeSound funtion for that.
+Now if we create object of Dog and calls makeSound funtion then it would call Dog Function. But if we dont ahve makeSound funtion then we will be direclty calling Animal makeSound function.
+
+Why?
+WHen the object is created it will initilize all the static members first. Now there are no static members in our class So now everything will happen at runtime.
+So first object gets created. It will look for constructor in this case both has default constructor it will initilize them. Later when we call a funtion at runtime. It going to go look for dog.makeSound first now if it find its its oging to run that and stop its execution.But if it doesnt then it will go to its parent class and look makeSound there and run Animal class funtion.
+
+In which case it wont work. If Animal class doesnt have default constructor and Dog class has an defualt constructor at that time it wont print makeSound from animal class. It will give error because there is no way for Dog class object to go to parent class. Unless they have constructor define with same paramters.
+
+Now there are some rules reagarding inheritance -
+
+Object of Parent class cannot be assigned to reference variables of Child Class. WHy? because Object of parent class has no control over child class they just cannot see what happening in child class they are not linked. Only child class is linked with parent class now the other way around.
+Dog dog = new Animal(); //doesnt work
+
+Can Object of child class be assigned to Reference variable of type Parent class. Yes but still it cannot access the members of child class.
+
+Animal animal = new Dog();
+
+Works but animal wont be able to access element of Dog class Why? its simply cannot access members from child class. But why can i access member from own class. Because we are assigning object of dog class Now new Dog() is able to access elements from parent class similarly our reference variable will be also able to access the same.
+
+Also when the memebers of parent class are private child class wont be able to access it.
+
+Super Keyword - Super is a keyword when used it referes to the members of SuperClass/ current class Parent class. Using this keyword we can access members of parent class direclty. 
+Lets say Parent Class and Child Class both have funtion to print their name. Now the problem arise when object of child class trying to access member of parent class name. Because it just cant since both members have same name it wont be able to tell how can it access member of parent class.
+But we can resolve this issue using super keyword.
+If we create a funtion printParentName() and inside we print super.name; Then we will be printing the name of parent class.
+Insted if we print this.name then we will be printing name of same class.
+So super refers to the memebers of its superClass/Parent class while this refers to the members of its own class.
+
+Like if we want to access the constructor of Parent class we can just do super.ConstructorName();
+
+But when/where how to use super.
+
+Now super can only be used from the child class. Also it can be only used from a constructor or function of the class. Now while calling parent clas members super must  be the first line in the constructor or function.
+If we want to call a parent constructor then we follow these conventions - super(parameters of the constructor) 
+and for other memebers use super.membername;
