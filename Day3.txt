@@ -41,3 +41,77 @@ But when/where how to use super.
 Now super can only be used from the child class. Also it can be only used from a constructor or function of the class. Now while calling parent clas members super must  be the first line in the constructor or function.
 If we want to call a parent constructor then we follow these conventions - super(parameters of the constructor) 
 and for other memebers use super.membername;
+
+Types of inheritacen - 
+There are multiple types of inheritance among which some of them are supported by java and some of them are not.
+Single inheritance - In single inheritance there are 2 classes parent class and child class and child class extends parent class. This is very simple type of inheritance.
+
+MultiLevel Inheritance - In this type of inheritance there are multiple classes and every class is inheriting every class above it. Meaning if there ar 4 classes A,B,C,D then to apply multilevel inheritance we can just do . D extends C, C extends B, B extends A. now the class at the most below is able to access elements form the top most class.
+This is known as multileve inheritance.
+
+Multiple inheritance - This is type of inheritance where one class can extends/inherit multiple classes. This type is not supported in java. Since it create a diamond problem. A diamond problem is when there are 2 parent classes and there is 1 child class extending both of the class like this, class C extends A && B. 
+Now what if class A and class B have a property called sound. Then if we try to access super.sound() then which class sounds is it going to take? There is ambugity this is why its not allowed in java.
+
+Hierarchical Inheritance - This is type where there is only one parent class and multiple classes extends to that one class. Like there can be C extends A, B extends A, D extends A. This is possible and now all the child classes will now have access to members of its parent class. But now here class C cannot access class B. Since they are not linked in any way.
+
+Hybrid Inheritance - Its a hybrid  of single and multiple inheritance. Since multiple inheritance is not allowed its also not allowed.
+
+Cyclic Inheritance - Its occures when the class extends it self or there are 2 classes and then both extends each other. Its also not allowed . Since there is not need of this type of case. Where class A extends A. since all the properties of class A is already present in class A. Or class A extends B and class B extends A. Now here also there is not need of this. becuase you can just simply create a single seperate class which will have properties/members of both of the class.
+
+
+Polymorphism - Plolymorphism is a property of OOPs which allows having one form but different implementation/meaning. It allows objects of different subclasses to be treated as objects of same superclass.
+
+There are 2 types of polymorphism - Compile Time / Method OverLoading and Runtime/ Dynamic/Method Overriding
+
+Compile Time polymorphism - 
+If we have same function/construtor in a same class but with different defination then its called as complile time polymorphism. Defination means the parameters in the method or constructor must be different. The order of the paramerter must not be same if the method of same name exists.
+
+For eg: we can have same method in single class like this - public void plus(a,b){} public void plus(a,b,c) and many more. So just the defination must be different.
+
+And why is this called complile time because when this is all compiled java decieds which method to run when the parameters are passed in the main function. If there are a method which doesnt exist it will give compilation error
+
+RunTime polymorphism. Overriding
+
+Method overriding, also known as dynamic polymorphism, happens when a subclass declares a method with the same name, same parameters, and the same return type as a method in its superclass. The overriding method in the subclass provides a specific implementation that overrides the implementation in the superclass.
+
+Now how does it works lets say we have a Animal class and Dog class both have same funtion "public void makeSound(){}".
+Now when we create a object of class dog and call the makeSound funtino then ofcourse the method from dog class is going to get called. 
+Also when we do it for Animal class the object of Animal class calls the function from animal class makeSound.
+But this is not polymorphism its just normal method calling. 
+Polymorphism occurs when the object of subclass is assigned to reference variable of parent class. Then the actual runtime polymorphism occurs.
+Animal animal = new Dog();// this is run time polymorphism.
+Now if the makeSound() function occurs in Dog class then it will call from Dog class and if not then it will check for Animal class and called it.
+But when it wont work and why?
+It wont work when ofcourse when the method doenst exist.
+And 2nd when the method in parent class doesnt exist but exist in child class. Now we know that parent class cannot acccess information/members from child class.
+Now why it happens. Now in java when we assign a object of subclass/child to the reference variable of parent/superclass the compiler treats object of child class as instance of parent class now we know a instance of parent class would never be able to invoke method from child class.
+Now why does this works only when same methods exist in both of the parent and child class.
+This is due to dynamic binding. When the compilation happens. It simply checks if the makeSound() method is present in parent or not. But at runtime it will dynamically invoke method from childclass only if it exist in parent class. Becaues first the objects gets created at runtime. And then java know try to find the method we just called with the object first. If it exist then it will run it or then look into parent class.
+But only if there are no compilation errors.
+
+And can only be achived using methods and not variables.
+
+Can you override Static Method?
+No you cannot because static does not depends on the object of the class it depends on the class it self. And overrding depends on the class object.
+Hence when we have 2 static method if we call from the child class it will always run the parent method because if doesnt depends on the object of the class.
+
+Final Keyword - 
+Final is used to make anything constant. If we declared a vairible final then we need to initiate it then and there. and we cannot assign it a new values.
+Same for a method beign final. If a method is final in parent class then we cannot override that method in subclass. There can only be only method in the entire java language if its declared as final. Same if we declared class as final. Then the class cannot be inherited as well. Why? If anyone makes a class final then they make it so that classes properties cannot be modified or changed by anyone. Hence if we make a class final then no one can access it but themselves.
+
+Final is also used to make code faster why?
+Since we know final method cannot be overriden hence we can say that the code is resolved at compile time only then at runtime we already konw what to run rather than dynamically checking what to run when the call is made. Basically we already know what are the order of method calls on compile time rather than runtime. It saves the overhead of repetedly cheking which method to invoke when the call is make. This is also know as early binding/ static binding.
+We also know that final method cannot be overriden and overriding happens dynamically. logical sense
+
+If there are non final or non static method then its called as late binding. Since all of the calls will be handle at runtime dynamically.
+
+Encapsulation - 
+Encapsulation is a property of OOPs which helps us to wrap all the information without showing the internal implemetation. data hiding  is a subprocesss of encapsulation which allows to achieve encapsulation. which is making the variables or members private and not accesible by the outside world direclty but can be accessed by a set of constructed function which is knows as getters and setters and this is encapsulation.
+
+
+Abstraction - 
+Its a property of OOPs where it foucuses on what is important and hides the unnecessary implementation that the user dont care about. Like the ArrayList class. Now we dont actually cares how the data is being added to my list. or how im able ot get my data. We only care about addding and getting. We actually dont care about what is happening behind the scenes. This is abstraction.
+Abstraction is a process where we only care about the outer and important implmentation and not the BTS. Its a design level thing.
+It dumbs down the complexity of the implementation by only providing the important methods.
+
+Abstraction and encapsulation works side by side.
