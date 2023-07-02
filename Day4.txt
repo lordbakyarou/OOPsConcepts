@@ -1,0 +1,17 @@
+Day4 - 
+Access Modifiers - 
+Access Modifiers are the keyword which will tell us where that pariticular class/ class properties/members are going to be used. What is the reach of that member.
+There are 4 access modifiers. Public, Private, Protected and Default
+Public - when used public keyword infront of any class/function/variabels we can now access that property from anywhere in the world. The reach of public keyword is 1) within the class 2) inside a package(with or without subclass) 3) outside a package(with or without subclass)
+Here with or without subclass means we can just create a Object of that class which hold that public keyword and access it and modify it.
+
+Protected - when used protected keyword we can access it 1) within the class 2) within the package(with or without subclass) 3) outside of the package/different package(only with subclass). Here to access protected method/vairbles outside the package we can only use it if the class we are accessing it from is a subclass of that parent class which has the original memeber.
+
+Private - We can only use it inside a class. Not even in the subclass or in same package. This keyword is used for data hiding purposes and the only way we can use it is we have getter and setter which access these variabels.
+Now getter and setter are a public function which can access modify and get the value of that variables. These are used because lets say we want to use these elements but only under some strict conditions. 
+Like there is a bank account where we deposit the money and it has balance variables. Now if the variables is public we can just update the value of balance and get us unlimited money. But if the vairables is private then only the memebrs inside the class can access it. But the issue arise when we arnt able to modify it. 
+Now here we can use getter and setter. We can have some strict logic to our setter method which with only modify the private element when all of those condition matches. Like the person who is depositing it is actual customer, there all customer check is valid, and the money they sent is correct and all.
+And also we dont want to get how much amount we have from anywhere. So for that we can use getter and the class who use this getter method now can only access this element.
+
+Default modifier - default is when there is no modifiers used before a variables/method. this will make it default. the reach of default is 1)withint the class 2) inside a same package.
+
