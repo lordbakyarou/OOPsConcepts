@@ -15,3 +15,60 @@ And also we dont want to get how much amount we have from anywhere. So for that 
 
 Default modifier - default is when there is no modifiers used before a variables/method. this will make it default. the reach of default is 1)withint the class 2) inside a same package.
 
+Built-In packages - There are like 7 standard packages in java which we use on daily basis. These packages are built-in meaning someone else wrote this code for us now we are just using it. And java use it by default so in ide you dont have to specify it as such. 
+These packages are .lang, .io, .util, .applet, .aws, .net;
+We have been using .land, .io and .util since we started programming.
+
+.lang package hold the main Object class which is the top most class in inheritance. And many other things like premetive and non premetive data types, Math class as well.
+
+.io package has all the input output function like BufferReader, BufferWriter and also function which are used to read file as input in java and many more things.
+
+.util package has all the main classes like ArrayList and many more dataStructor and collection framework. The Scanner class is also in thsi pacakge.
+
+.appelet is used for servelet whcih is used to create web technologies.
+
+.awt is used to create gui applications in java like to create a button and all.
+
+.net is used to link out mobile application to the internet. It has many more thigns also.
+
+Object class - Object class is the top most class in inheritance heirarchy, it is a class which is inherited by all classes are create implicilty or by defualt. We cannot manally uninherit it.
+Object class has functions like toString(), hasCode(), equals(), getClass(), finalize().
+
+.toString() method is used to create any object into a string bacially. Lets say we have an Array of element and if we call toString on it, it will print [1,2,3] something like this. But if we call toString on a StringBuilder then it will print normal string why? why is it printing differnet for other and differnet for somethign else if it belons to a same class.
+
+Overriding. This function toString is getting override in many classes like Array class and StringBuilde class. these classes are overriding it and creating there own implementation on these methods. And thats how we get different output for differnt classes.
+We can also write out own implementation if we override these class.
+
+.hashCode() using this method we can get a hashvalue of our object. If we create a object of Animal class and print obj.hashcode() then it will print some randon values which will be unique to that class. 
+There is a inter implementation of hashcode which apply a algorithm and creates these hashcode. Many people think that this is a adderess of obj itself but no its not. Its just some randome value created based on the algorithm. In java we cannot get the address of objects from heap memory. NEVER.
+Also if we create 2 new object of same class the hashcode will be differnet for both of them.
+
+.equals() is used to compare values inside of the object. Object like String used it the most. If we have 2 string with same value assigned to it lets say we have String a = new String("hey") and String b = new String("hey").
+And we use a.equals(b) and a == b we will get true and false as output.
+becasue the .equals() method uses the values inside the object itself means it will check is hey== hey. But using a==b means they are checking the hashcode of these 2 objects. which willnever be equal.
+
+In this case nothing is added to the stringPool. Since we use new keyword it will bypass the string pool mechanism. 
+So the way stringpool works is . It is inside a heap imagin a circle of heap and inside it is stringpool.
+So when ever we create a string literal then that is gone in the stringpool and if we create new string literal. It will check if the values is available in the string pool and if it will then the address of that previoous values is assigned to out new variables.
+But if we create a new object of String then it will bypass stringpool and it will store the value in heap. So if the the String is created by using new keyword it will be stored in heap memory.
+
+
+.finalize() is used by java internally to call the garbage collector when the java needs more memory or the memory used by currect operation are so much that the java program wont be able to perform if memory is not being released.
+So this method is used to do that. We cannot change when this method can be called or how this method can be called. But what we can change is what willhappen when this method will be called. Meaning we can ovveride it and add like SOP("memory Cleared"); and when ever the garbage collector is called it will print that message.
+Garbage collector only runs when it needs to run. It wont run after every execution or every creation of object. It will only run when the java needs more memory. So now it cannot create more memroy so it will go and see which objects it doesnt need and it will remove them from memory.
+
+So if we have something like this then we can see how it will work.
+class A{
+	protected void finalize() throws Throwable {
+			System.out.println("Garbage Collector called");
+		}
+}
+
+Now  if you call this method million time you can see that garbage collector is ruuing. But if you call this only 10000 time it wont run.
+ public static void main(String[] args) {
+		A obj;
+
+		for(int i =0;i<1000000;i++){
+			obj = new A();
+		}	
+    }
