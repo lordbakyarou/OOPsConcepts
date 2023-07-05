@@ -21,3 +21,34 @@ It can also have Static method since static dont depend on the object of the cla
 We cannot make abstract class as final. Final class means we cannot override its methods so abstract method now wont be able to be overriden also it cannot be inherited. Since it will give error.
 
 Multiple inheritance doesnt support in abstract class since it also has concrete method/normal methods.
+
+Interface - Interface is a blueprint of a stric rule that a derived class should followed.
+Interface are not class it is its own type interface. It allows us to achive absolute abstraction. Interfac contains by default public abstract methods if we create one. Meaning we dont have to specify like public abstarct void music(); we can just now wirte void music(). Every method in interface is abstract. and variables in interface are final and static by default.
+Since interface is not class it also dont have constructor or need to create a object of it.
+Interface doesnt have concrete methods.
+To extends or to use properties of interface we use implements keyword. See how we used extend to inherit all the properties of parent class using extend keyword. Here we are using same but implements keyword.
+
+Using interface we can achieve multiple inheritance. We can implements multiple interface in same class like this if i have 1 class name car and 2 interface like engine and mediaPlayer. then i can just do "car implements engine, mediaPlayer" this is multiple inheritacen now i can override methods from engine class and mediaPlayer class as well.
+
+Why are we able to do this?
+We know that why we cannot use multiple inheritance. Because if there are 2 concrete method with the same name like makeSound() and a child extends bothh of the classes and we call that child.makeSound() now java doesnt know which method to call. Hence it will give error.
+But now in interface we are not implementing the method we are just declaring it. the method doesnt have a body and whatever interface we implement we need to override the method/ wirte the body for that method. And when every we call the method it will call the childclass implementation of that method not the interface. Sicne interface dont have a body.
+Now the method depends on the class which inherits it.
+
+
+We cannot create a object of interface for obivious reasons. But we can have referece varible type as interface like 
+InteferName referenceVariables = new SubclassObj(); This is allowed but the same rule applies that new mehtod in the subclass wont be accessible now.
+
+just  like class a interface can extend another interface. If there are 2 interface a and b we can write B extends A. Now if any class implements B interface then it have to override all the methods of Interface as well.
+
+We can have static methods in interface since we know that static method dont need object to call it. We can call it using Interface name.
+
+We also have default method in interface whihc can have a body. The way we write it is default void methodBody(){"Hey its default interface"}
+And the reason why we are able to do this is because lets say there are 10 classes implementing our interface and we add a new method in our interface now all those 10 classes needs to override this methods as well. So we in java8 they provided default keyword so now the classes which dont concern this feature will ignore it and we dont have to override this method.
+But we cannot have same default method name in anyother interface because this will create same diamond problem we faces in multiple inhertance.
+
+
+Nested Interface - We can have interface inside a interface or interface inside a class as well. Now if we want to implement a interface insdie a class by any other class we can write as Class B implements ClassA.InterfaceName{}
+
+
+
