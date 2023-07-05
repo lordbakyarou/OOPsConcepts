@@ -1,0 +1,23 @@
+Day5 - 
+
+Abstraction - Abstraction is a property of OOPs in java which allows us to achieve complexy system/feature by breaking down it into more managable parts/section. It provides what is important for a user to see while hiding unnecessary details of the system. Abstraction is achived by abstract class and interface.
+For eg. if there is a restauraunt. And we want to apply abstraction to it then how would we do that?
+We know abstraction hides unnecessary details of complex system. So we can say that menu is a abstract class and what ever we order how its made we dont care about that. The algorithm behid making the recepie or food we dont care about that. This is abstraction.
+
+Abstract class - Abstract class helps us achieve abstraction. By making the class more readable like a menu. So if we have one or more abstract methods then we have to declare class as abstract class. We can make abstract methods using abstract keyword. Whatever method  is abstract cannot have a body. for eg: abstract void menu();
+Since abstract methods dont have body the class which inherits the abstract class must override the abstract method or else it will give error.
+
+Since abstract methods cannot have body we cannot make a object of abstract class. We can have abstract class as reference type but not as object.
+
+We cannnot make abstract methods as private. Since abstract methods must be overriden by subclass, private access modifier wont allow that.
+
+So in the above example of restauraunt menu card we can make menu class and it will have all the items on the menu like rice, curry, chapatis and etc. and we can create class like kitchen which will override all these abstract method and implement its own algorithm. Now we can also have a main function whcich takes input from user and ask which item on the menu they want.
+So for user its more cleaner since they are only looking at the menu card and they dont care how the food is going to be implemented.
+
+Abstract class can also have concrete method whcih means normal method with the body.
+It can also have final method. Since final method cannot be overriden by subclaass abstract class must have implementation of this method.
+It can also have Static method since static dont depend on the object of the class we can directly access this method using the class name itself.
+
+We cannot make abstract class as final. Final class means we cannot override its methods so abstract method now wont be able to be overriden also it cannot be inherited. Since it will give error.
+
+Multiple inheritance doesnt support in abstract class since it also has concrete method/normal methods.
