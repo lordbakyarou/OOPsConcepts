@@ -65,7 +65,7 @@ So we also know that somehow somewhere the non static method is going to get cal
 
 Also we cannot use this keyword inside static object. Why? this keyword is a object of the class. Now the static method dont need a object to be accessed hence the this keyword has no use to beign with. Thats why we cant have it . It will give an error.
 
-Why main method is static? - in java the first thing run is main method. Now if main method would have been non static/instance method. then we would have also needed a object to be created. So how can we create a object of a method which is the first method to be created. There is nothing before main method in java. If java starts it will go and look straight for main method. And if its non  static then it cannot access it since it need a object. But there is no way java can create a object for that main method. since its the first thing which is running.
+Why main method is static? - in java the first thing run is main method. Now if main method would have been non static/concrete method. then we would have also needed a object to be created. So how can we create a object of a method which is the first method to be created. There is nothing before main method in java. If java starts it will go and look straight for main method. And if its non  static then it cannot access it since it need a object. But there is no way java can create a object for that main method. since its the first thing which is running.
 Its like there cant be humans/rocks/time before Big Bang. Since big bang is the first thing in this universe nothing can exist before that.
 
 And why it is satic. because we dont need objects to access a static method or variable. Static members belongs to the class non the object of the class.
