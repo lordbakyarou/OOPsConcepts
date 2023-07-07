@@ -93,3 +93,79 @@ public class Main
 		
 	}
 }
+
+Comparables - In java we can compare strings, integers or any wrapper class but how can we compare Object. So we cannot use basic operator to check which class is bigger then other. So how do we do it?
+We can use Comparable Inteface. Comparable allows us to compare objects of same type. This interface allows us to compare object by building our own function. Comparable interface has 1 abstract method called toCompare which when we extend the interface we need to implement that method. 
+And inside that mehod we can provide with what values we want to compare that object.
+
+So for eg: if we have a class which takes name and percentage. And we want to compare object based on percentage. We can jsut extend the compareble interface. Impelment the toCompare method where toCompare(ClassName obj, ClassName obj2) and inside the method we will return if(obj.percent > obj2.percent) true || false.
+And later while calling the method we can just do obj1 > obj2 and if its bigger then return 1 is bigger or else 2 is bigger.
+THe function like sort uses this comparable intercae to compare values of the object. Like we use it on Array. Array is what a class.
+
+Lambda function - Lambda functions, also known as anonymous functions or function literals, are a feature introduced in Java 8. They allow you to create small, concise blocks of code that can be treated as values and passed around.
+
+Lambda functions in Java are primarily used to implement functional interfaces, which are interfaces that define a single abstract method. The lambda function provides a concise way to define the implementation of that single abstract method.
+
+Like for exmaple the sort method we can use this lambda for eg. Arrays.sort((a,b) -> a-b); Now this array is sorted in decending order. How this lambda function will first iterate thorug the array. and it will take 2 values a and b. a and b are just elements of the array. Now we will do a-b if a-b is <0 means a is less than b similary if a-b > 0 means b is smaller than a. So based on that value if the opearation a-b is < 0 we will push the smaller elemnet at last. Sort function uses more complex logic but this is how it kinda works.
+
+For short function we can have something like tihs - interface MathOperation {
+    int operate(int a, int b);
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Lambda function to implement addition
+        MathOperation addition = (a, b) -> a + b;
+        System.out.println("Addition: " + addition.operate(5, 3));
+
+        // Lambda function to implement subtraction
+        MathOperation subtraction = (a, b) -> a - b;
+        System.out.println("Subtraction: " + subtraction.operate(5, 3));
+    }
+}
+
+Exception Handling - Exception in java is a point in a program when its running. That it faces a difucutl phase while solving the problem and it needs your help to do so. If you dont help the program will crash.
+Exception are is an event which occurs during the execution of a program that disrupts the flow of the program. And which is recoverable if we provide or handle that exception before hand.
+
+Thsi is exception and also exception and error is not the same thing. Exception is something if taken care of it properly can be handle but the error we cannot. When a error occurs that means the program is not recoverable and the program is crashed. At that point in the program we cannot do anything like stackOverFlow error. WHen the memory is full. We cannot handle that.
+But num/0 we can handle this so its a arithmetic Exception.
+
+In Java Object is a Top most class. And Throwable extends Object. Now 2 classes Extends Throwable class. Exception and Error. We dont need to cover about Error class.
+Exception class has 2 more classes. Checked Exception and UnChecked Exception.
+Checked Exception must be handled within the code itself using try catch block. Otherwise it will give compilation error.
+And Uncheck expcetion are runtime exception which dont need to handle but will still inturrupt the flow of execution of the program.
+We can also handle it by using try and catch block.
+Uncheck exception are like ArithmeticException, NullPointerException or the exception which occurs due to programmer fault. And is fixabel quickly.
+
+Examples of checked exceptions in Java include IOException, SQLException, and ClassNotFoundException.These kind of exception we need to handle in try and catch block while writing the code other wise it will give compilation error.
+
+try and catch - try and catch block is used to handle exceptions. if we know that this statment or line of code might give us exception then we can just write it inside try block and if there is an exceptino it will be catched by catchblock.
+like.
+
+try{
+code which might give exception
+} catch (ExceptionCLassNameWhichYouThinkItWillGive e){
+what you want to do after the exception is caught
+}
+
+try{
+a = 1/0;
+}
+catch (ArithmeticException e){
+System.out.println(e.getMessage());
+}
+
+We can have multiple catch block as well 
+Finally - this is a block whihc will print no matter if we catch the exception or not.
+
+throw - this keyword is used to throw a exception. For eg we can do if(b == 0) then throw new ArithmeticException. And we need to tell the class that this function might throw an exception we in class we write it as 
+public class ThisClassMightThrowException throws ArithmeticException {
+a = 1,b=0
+if(b == 0){
+	throw new ArithmeticException();
+}
+return a/b;
+}
+
+
+
